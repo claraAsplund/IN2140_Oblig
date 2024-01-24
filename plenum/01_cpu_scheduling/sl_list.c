@@ -1,17 +1,17 @@
 #include <stdio.h>
-#include "queue.h"
+#include "sl_list.h"
 
-struct QueueElement
+struct SLListElement
 {
-    int             pid;
-    QueueElementPtr next;
+    int              pid;
+    SLListElementPtr next;
 };
 
-QueueElement elements[1000];
+SLListElement elements[1000];
 
-QueueElementPtr unused_elements = NULL;
+SLListElementPtr unused_elements = NULL;
 
-void queue_init( )
+void list_init( )
 {
     for( int i=0; i<1000; i++ )
     {
@@ -21,9 +21,9 @@ void queue_init( )
     }
 }
 
-QueueElementPtr queue_get_unused( )
+SLListElementPtr list_get_unused( )
 {
-    QueueElementPtr ptr = unused_elements;
+    SLListElementPtr ptr = unused_elements;
 
     if( ptr == NULL ) return ptr;
 
@@ -32,16 +32,16 @@ QueueElementPtr queue_get_unused( )
     return ptr;
 }
 
-void queue_put_unused( QueueElementPtr ptr )
+void list_put_unused( SLListElementPtr ptr )
 {
     ptr->pid        = -1;
     ptr->next       = unused_elements;
     unused_elements = ptr;
 }
 
-int queue_enqueue( QueuePtr queue, int pid )
+int list_enqueue( SLListPtr list, int pid )
 {
-    QueueElementPtr q = queue_get_unused( );
+    SLListElementPtr q = list_get_unused( );
     if( q == NULL )
     {
         printf("There were no unused process blocks available. enqueue failed.\n");
@@ -51,13 +51,13 @@ int queue_enqueue( QueuePtr queue, int pid )
     q->pid = pid;
     q->next = NULL;
 
-    if( queue->first == NULL )
+    if( list->first == NULL )
     {
-        queue->first = q;
+        list->first = q;
         return 1;
     }
 
-    QueueElement* iterator = queue->first;
+    SLListElement* iterator = list->first;
     while( iterator->next != NULL )
     {
         iterator = iterator->next;
@@ -66,34 +66,34 @@ int queue_enqueue( QueuePtr queue, int pid )
     return 1;
 }
 
-int queue_dequeue( QueuePtr queue )
+int list_dequeue( SLListPtr list )
 {
-    if( queue->first == NULL ) return -1;
+    if( list->first == NULL ) return -1;
 
-    QueueElementPtr ptr = queue->first;
-    queue->first = ptr->next;
+    SLListElementPtr ptr = list->first;
+    list->first = ptr->next;
 
     int pid = ptr->pid;
-    queue_put_unused( ptr );
+    list_put_unused( ptr );
 
     return pid;
 }
 
-int queue_remove( QueuePtr queue, int pid )
+int list_remove( SLListPtr list, int pid )
 {
-    if( queue->first == NULL ) return -1;
+    if( list->first == NULL ) return -1;
 
-    QueueElementPtr ptr = queue->first;
+    SLListElementPtr ptr = list->first;
 
-    if( ptr->pid == pid ) return queue_dequeue( queue );
+    if( ptr->pid == pid ) return list_dequeue( list );
 
     while( ptr->next != NULL )
     {
         if( ptr->next->pid == pid )
         {
-            QueueElementPtr tbd = ptr->next;
+            SLListElementPtr tbd = ptr->next;
             ptr->next = tbd->next;
-            queue_put_unused( tbd );
+            list_put_unused( tbd );
             return pid;
         }
         ptr = ptr->next;
@@ -102,9 +102,9 @@ int queue_remove( QueuePtr queue, int pid )
     return -1;
 }
 
-void queue_print( QueuePtr queue )
+void list_print( SLListPtr list )
 {
-    QueueElement* iterator = queue->first;
+    SLListElement* iterator = list->first;
     while( iterator != NULL )
     {
         printf( "%d ", iterator->pid );

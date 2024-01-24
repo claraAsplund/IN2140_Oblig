@@ -1,15 +1,14 @@
 #include <stdio.h>
-#include "queue.h"
+#include "sl_list.h"
 
 #define IDLE 0
 #define BUSY 1
 
-int system_state = IDLE;
-int process_ids = 0;
-
-int   running_process = -1;
-Queue ready_queue;
-Queue blocked_queue;
+int    system_state = IDLE;
+int    process_ids = 0;
+int    running_process = -1;
+SLList ready_queue;
+SLList blocked_queue;
 
 int process_create( );
 int is_process_running( int pid );
@@ -20,7 +19,7 @@ void print_status( int line );
 
 int main( )
 {
-    queue_init();
+    list_init();
     ready_queue.first = NULL;
     blocked_queue.first = NULL;
 
@@ -106,11 +105,11 @@ void print_status( int line )
     }
 
     printf("    Ready queue: ");
-    queue_print( &ready_queue );
+    list_print( &ready_queue );
     printf("\n");
 
     printf("    Blocked queue: ");
-    queue_print( &blocked_queue );
+    list_print( &blocked_queue );
     printf("\n\n");
 }
 
@@ -129,7 +128,7 @@ int process_create( )
     }
     else
     {
-        queue_enqueue( &ready_queue, process_id );
+        list_enqueue( &ready_queue, process_id );
         printf( " and in ready queue\n" );
     }
 
@@ -146,7 +145,7 @@ void current_process_terminates( )
         return;
     }
 
-    int pid = queue_dequeue( &ready_queue );
+    int pid = list_dequeue( &ready_queue );
 
     running_process = pid;
 }
@@ -164,8 +163,8 @@ void current_process_blocks( )
 
     if( running_process >= 0 ) printf( "Process %d blocks\n", running_process );
 
-    queue_enqueue( &blocked_queue, running_process );
-    int pid = queue_dequeue( &ready_queue );
+    list_enqueue( &blocked_queue, running_process );
+    int pid = list_dequeue( &ready_queue );
 
     if( pid < 0 )
         system_state = IDLE;
@@ -175,14 +174,14 @@ void current_process_blocks( )
 
 void process_wakup( int pid )
 {
-    int success = queue_remove( &blocked_queue, pid );
+    int success = list_remove( &blocked_queue, pid );
     if( success < 0 )
         return;
 
 
     if( system_state != IDLE )
     {
-        queue_enqueue( &ready_queue, running_process );
+        list_enqueue( &ready_queue, running_process );
         printf( "Process %d unblocked and in ready queue\n", pid );
     }
     else

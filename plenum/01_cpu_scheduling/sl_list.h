@@ -1,24 +1,24 @@
 #ifndef IN2140_QUEUE
 #define IN2140_QUEUE
 
-struct Queue;
-struct QueueElement;
+struct SLList;
+struct SLListElement;
 
-typedef struct Queue         Queue;
-typedef struct Queue*        QueuePtr;
-typedef struct QueueElement  QueueElement;
-typedef struct QueueElement* QueueElementPtr;
+typedef struct SLList         SLList;
+typedef struct SLList*        SLListPtr;
+typedef struct SLListElement  SLListElement;
+typedef struct SLListElement* SLListElementPtr;
 
-struct Queue
+struct SLList
 {
-    QueueElementPtr first;
+    SLListElementPtr first;
 };
 
-void queue_init( );
-int queue_enqueue( QueuePtr queue, int val );
-int queue_dequeue( QueuePtr queue );
-int queue_remove( QueuePtr queue, int pid );
-void queue_print( QueuePtr queue );
+void list_init( );
+int  list_enqueue( SLListPtr queue, int val );
+int  list_dequeue( SLListPtr queue );
+int  list_remove( SLListPtr queue, int pid );
+void list_print( SLListPtr queue );
 
 #endif /* IN2140_QUEUE */
 

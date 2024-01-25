@@ -1,5 +1,7 @@
 # Uke 3
 
+[test.c filen fra gruppetimen er her](./test.c)
+
 [Tilbake til oversikt](../README.md)
 
 [Veldig god guide fra ifjor](https://github.uio.no/IN2140v2/in2140-v22/tree/gh-pages/c-programmering/komme-i-gang)

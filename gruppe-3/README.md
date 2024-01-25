@@ -13,8 +13,7 @@
 Videoer og oppgaver om C-programmering (Cbra):\
 https://github.uio.no/IN2140v2/in2140-v21/tree/master/cbra
 
-**Gruppelærere:** Lise og Ole Jørgen \
-**Når:** Torsdag 14:15-16:00 \
+**Gruppelærer:** Ole Jørgen \
+**Når:** Onsdag 10:15 - 12:00 \
 **Rom:** Sed \
-**Kontakt:** liseche og olejno på mattermost \
-**Mail:** liseche@ifi.uio.no olejno@ifi.uio.no
+**Mail:** olejno@ifi.uio.no

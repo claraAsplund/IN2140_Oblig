@@ -1,7 +1,7 @@
 # Uke 4
 Her finner du oppgaver om structs og minnefeil.
 
-- [Opptak fra ukens Cbra](https://www.youtube.com/watch?v=pLFEds_SXjs&t=5s).
+- [Opptak fra ukens Cbra](https://uio.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=fe0d99b7-ca41-42ed-af78-b0fb007e2ace).
 
 ## Snarveier
 #### [Repetisjon om pekere](#repetisjon)

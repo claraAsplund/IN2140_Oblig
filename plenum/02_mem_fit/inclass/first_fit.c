@@ -25,6 +25,8 @@ Element* first_fit_alloc( int size )
     getchar(); // waiting for a keypress
 
     /// try to allocate a free block of size elements and return it
+    // printf("The free_mem list: %p\n", free_mem.first );
+
     retval = find_first( &free_mem, size );
     if( retval ) printf( "Success from %d size %d\n", retval->start, retval->size );
     else         printf( "Failed\n" );
@@ -61,10 +63,10 @@ int main( )
     first_fit_free( elem[1] );
     first_fit_free( elem[4] );
 
-    elem[6] = first_fit_alloc( 1 );
-    elem[7] = first_fit_alloc( 1 );
-    elem[8] = first_fit_alloc( 1 );
-    elem[9] = first_fit_alloc( 1 );
+    elem[6] = first_fit_alloc( 4 );
+    // elem[7] = first_fit_alloc( 1 );
+    // elem[8] = first_fit_alloc( 1 );
+    // elem[9] = first_fit_alloc( 1 );
 
     first_fit_free( elem[6] );
 
@@ -72,7 +74,7 @@ int main( )
 
     elem[11] = first_fit_alloc( 2 );
 
-    first_fit_free( elem[8] );
+    // first_fit_free( elem[8] );
 
     first_fit_free( elem[0] );
 

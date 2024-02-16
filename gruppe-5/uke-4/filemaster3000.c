@@ -11,7 +11,7 @@ int main(int argc, char **argv){
 	char buf[BUFSIZE];
 	int rc, wc;
 
-	if (argc < 2){
+	if (argc < 3){
 		fprintf(stderr, "too few arguments\n");
 		return 1;
 	}
@@ -37,8 +37,8 @@ int main(int argc, char **argv){
 	}
 
 	if (*mode == 'w'){
-		if (argc < 3){
-			fprintf(stderr, "too few arguments");
+		if (argc < 4){
+			fprintf(stderr, "too few arguments\n");
 			fclose(fil);
 			return 1;
 		}

@@ -8,7 +8,8 @@
 |6|	nasteeha	|rawank	|danielof|
 |7|	stiasos	|stigro	|amandug|
 |8|	ingrhofs	|hannkars	|mathigj|
-|9|	malikts	|stigro|	ktanders|
+|9| rogejoh | aklhauge| malikts |
+|------|-----------|-----------|----------|
 |10|	andrsev	|amandug|	vegarott|
 |11|	aleksafa	|stiasos|	daniedm|
 |12|	Matheamg|	Rewanr	|kaaremsi|
@@ -22,4 +23,5 @@
 |20|	olakri	|tuvaet|	theaaga|
 |21|	eivintv	|finnih	|shahinn|
 |22|	justass	|ahbonomi	|mohamadr|
-|23|	brageph	|chridol	|malikts|
+|23|	brageph	|chridol	| |
+|24|	malikts	|stigro|	ktanders|

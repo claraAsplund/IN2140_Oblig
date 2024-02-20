@@ -11,8 +11,8 @@
 |9| rogejoh | aklhauge| malikts |
 |10| shirazi| Dmitrykh|borgebj|
 |11| sunniros| pedrab| |
+|12|thedl|peterlol|mgstenej|
 |------|-----------|-----------|----------|
-|12|	Matheamg|	Rewanr	|kaaremsi|
 |13|	lddo	|stephask	|Philipef|
 |14|	hannemfa		|Geirbbr||
 |15|	joharond	|augustbb	|pedrab|
@@ -27,3 +27,4 @@
 |24|	malikts	|stigro|	ktanders|
 |25|	andrsev	|amandug|	vegarott|
 |26|	aleksafa	|stiasos|	daniedm|
+|27|	Matheamg|	Rewanr	|kaaremsi|

@@ -13,11 +13,11 @@
 |11| sunniros| pedrab|andessol |
 |12|thedl|peterlol|mgstenej|
 |13|ahmetcau|hermabj|danordqu|
-|14|yuanyuaj|sanderas||
+|14|yuanyuaj|sanderas|syverbs|
 |------|-----------|-----------|----------|
 |Group	| Member 1	| Member 2	| Member 3 |
 |15|	joharond	|augustbb	|pedrab|
-|16|	ingrhofs	|kornelsc	|magnupl|
+|16|	ingrhofs	|	|magnupl|
 |17|	thomaull	|mathigj	|shukrirn|
 |18|	Mariukvi	|milat	|olejfri|
 |19|	frodedah	|borgebj	|jorgenst|

@@ -10,8 +10,8 @@
 |8|	ingrhofs	|hannkars	|mathigj|
 |9| rogejoh | aklhauge| malikts |
 |10| shirazi| Dmitrykh|borgebj|
+|11| sunniros| pedrab| |
 |------|-----------|-----------|----------|
-|11|	aleksafa	|stiasos|	daniedm|
 |12|	Matheamg|	Rewanr	|kaaremsi|
 |13|	lddo	|stephask	|Philipef|
 |14|	hannemfa		|Geirbbr||
@@ -26,3 +26,4 @@
 |23|	brageph	|chridol	| |
 |24|	malikts	|stigro|	ktanders|
 |25|	andrsev	|amandug|	vegarott|
+|26|	aleksafa	|stiasos|	daniedm|

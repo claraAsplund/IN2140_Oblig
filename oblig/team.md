@@ -14,7 +14,7 @@
 |12|thedl|peterlol|mgstenej|
 |------|-----------|-----------|----------|
 |13|	lddo	|stephask	|Philipef|
-|14|	hannemfa		|Geirbbr||
+|14|	hannemfa		|Geirbbr|vegarott|
 |15|	joharond	|augustbb	|pedrab|
 |16|	ingrhofs	|kornelsc	|magnupl|
 |17|	thomaull	|mathigj	|shukrirn|
@@ -23,8 +23,6 @@
 |20|	olakri	|tuvaet|	theaaga|
 |21|	eivintv	|finnih	|shahinn|
 |22|	justass	|ahbonomi	|mohamadr|
-|23|	brageph	|chridol	| |
-|24|	malikts	|stigro|	ktanders|
-|25|	andrsev	|amandug|	vegarott|
-|26|	aleksafa	|stiasos|	daniedm|
-|27|	Matheamg|	Rewanr	|kaaremsi|
+|23|	brageph	|chridol	|ktanders |
+|24|	aleksafa	|andrsev|	daniedm|
+|25|	Matheamg|	Rewanr	|kaaremsi|

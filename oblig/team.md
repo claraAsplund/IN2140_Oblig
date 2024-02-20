@@ -14,10 +14,9 @@
 |12|thedl|peterlol|mgstenej|
 |13|ahmetcau|hermabj|danordqu|
 |14|yuanyuaj|sanderas|syverbs|
-||peterlol|thedl|joarba|
+|15|peterlol|thedl|joarba|
 |------|-----------|-----------|----------|
 |Group	| Member 1	| Member 2	| Member 3 |
-|15|	joharond	|augustbb	|pedrab|
 |16|	ingrhofs	|magnupl| avrina|
 |17|	thomaull	|mathigj	|shukrirn|
 |18|	Mariukvi	|milat	|olejfri|
@@ -30,3 +29,4 @@
 |25|	Matheamg|	Rewanr	|kaaremsi|
 |26|	lddo	|stephask	|Philipef|
 |27|	hannemfa	|Geirbbr|vegarott|
+|28|	joharond	|augustbb	|pedrab|

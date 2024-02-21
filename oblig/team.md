@@ -17,11 +17,10 @@
 |29|theodobe|evgenypi|fredfoss|
 |30|yuliiad|kishanis|joarba|
 |31|siljejka|sapnilaa|fardinsa|
-||melisskr|||
 |------|-----------|-----------|----------|
 |Group	| Member 1	| Member 2	| Member 3 |
 |16|	ingrhofs	|magnupl| avrina|
-|17|		|mathigj	|shukrirn|
+|17|	melisskr	|mathigj	|shukrirn|
 |18|	Mariukvi	|milat	|olejfri|
 |19|	frodedah	|borgebj	|jorgenst|
 |20|	olakri	|tuvaet|	theaaga|

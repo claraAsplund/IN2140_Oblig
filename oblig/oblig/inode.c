@@ -132,7 +132,7 @@ static void save_inode( FILE* file, struct inode* node )
     }
 }
 
-void save_inodes( const char* master_file_table, struct inode* root )
+void save_inodes( char* master_file_table, struct inode* root )
 {
     if( root == NULL )
     {

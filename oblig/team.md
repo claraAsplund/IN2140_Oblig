@@ -21,7 +21,7 @@
 |------|-----------|-----------|----------|
 |Group	| Member 1	| Member 2	| Member 3 |
 |16|	ingrhofs	|magnupl| avrina|
-|17|	thomaull	|mathigj	|shukrirn|
+|17|		|mathigj	|shukrirn|
 |18|	Mariukvi	|milat	|olejfri|
 |19|	frodedah	|borgebj	|jorgenst|
 |20|	olakri	|tuvaet|	theaaga|

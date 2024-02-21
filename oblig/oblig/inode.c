@@ -84,15 +84,72 @@ int delete_dir( struct inode* parent, struct inode* node )
     return 0;
 }
 
-void save_inodes( char* master_file_table, struct inode* root )
-{
-    /* to be implemented */
-}
-
 struct inode* load_inodes( char* master_file_table )
 {
     /* to be implemented */
     return NULL;
+}
+
+/* The function save_inode is a recursive functions that is
+ * called by save_inodes to store a single inode on disk,
+ * and call itself recursively for every child if the node
+ * itself is a directory.
+ */
+static void save_inode( FILE* file, struct inode* node )
+{
+    if( !node ) return;
+
+    int len = strlen( node->name ) + 1;
+
+    fwrite( &node->id, 1, sizeof(int), file );
+    fwrite( &len, 1, sizeof(int), file );
+    fwrite( node->name, 1, len, file );
+    fwrite( &node->is_directory, 1, sizeof(char), file );
+    if( node->is_directory )
+    {
+        fwrite( &node->num_children, 1, sizeof(int), file );
+        for( int i=0; i<node->num_children; i++ )
+        {
+            struct inode* child = node->children[i];
+            size_t id = child->id;
+            fwrite( &id, 1, sizeof(size_t), file );
+        }
+
+        for( int i=0; i<node->num_children; i++ )
+        {
+            struct inode* child = node->children[i];
+            save_inode( file, child );
+        }
+    }
+    else
+    {
+        fwrite( &node->filesize, 1, sizeof(int), file );
+        fwrite( &node->num_blocks, 1, sizeof(int), file );
+        for( int i=0; i<node->num_blocks; i++ )
+        {
+            fwrite( &node->blocks[i], 1, sizeof(size_t), file );
+        }
+    }
+}
+
+void save_inodes( const char* master_file_table, struct inode* root )
+{
+    if( root == NULL )
+    {
+        fprintf( stderr, "root inode is NULL\n" );
+        return;
+    }
+
+    FILE* file = fopen( master_file_table, "w" );
+    if( !file )
+    {
+        fprintf( stderr, "Failed to open file %s\n", master_file_table );
+        return;
+    }
+
+    save_inode( file, root );
+
+    fclose( file );
 }
 
 /* This static variable is used to change the indentation while debug_fs

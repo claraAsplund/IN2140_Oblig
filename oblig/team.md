@@ -21,7 +21,7 @@
 |33|anderwey|madhangs||
 |------|-----------|-----------|----------|
 |Group	| Member 1	| Member 2	| Member 3 |
-|16|	ingrhofs	|magnupl| avrina|
+|16|		|magnupl| avrina|
 |17|	melisskr	|mathigj	|shukrirn|
 |18|	Mariukvi	|milat	|olejfri|
 |19|	frodedah	|borgebj	|jorgenst|

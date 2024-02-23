@@ -57,7 +57,7 @@ struct inode* create_dir( struct inode* parent, char* name )
 struct inode* find_inode_by_name( struct inode* parent, char* name )
 {
     for(int i =0; i<parent->num_children; i++) {
-        if(strcmp(parent->children[i], name) == 1) { // true, inode exist
+        if(strcmp(parent->children[i]->name, name) == 1) { // true, inode exist
             return parent->children[i];
         }
     }

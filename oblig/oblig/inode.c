@@ -44,8 +44,61 @@ static int next_inode_id( )
 
 struct inode* create_file( struct inode* parent, char* name, int size_in_bytes )
 {
-    /* to be implemented */
-    return NULL;
+    if(parent->is_directory == 0) {
+        return NULL; // parent is a file and not a directory
+    }
+    
+    //check if the file already exist
+    for (int i = 0; i < parent->num_children; ++i) {
+    if (strcmp(parent->children[i]->name, name) == 0) {
+      return NULL; 
+    }
+  }
+
+  //allocate and create the iode
+  struct  inode* new_inode = malloc(sizeof(struct inode));
+  if(new_inode == NULL) {
+    return NULL; //Failed to allocate
+  }
+
+  //assigning attributes
+  new_inode->name = strdup(name); // Copy the name
+  new_inode->id = next_inode_id();
+  new_inode->is_directory = 0;
+  new_inode->num_children = 0;
+  new_inode->children = NULL;
+  new_inode->filesize = size_in_bytes;
+  new_inode->num_blocks = (int)ceil((double)size_in_bytes / 4096.0);
+    
+    //allocation for block array
+  new_inode->blocks = malloc(sizeof(new_inode->blocks)*new_inode->num_blocks);
+  if (new_inode->blocks == NULL) {
+    free(new_inode->name);
+    free(new_inode);
+    return NULL;    // Allocation failed
+  }
+
+  for (int i = 0; i < new_inode->num_blocks; ++i) {
+    new_inode->blocks[i] = allocate_block();     // Call your allocation function
+    
+    if (new_inode->blocks[i] == -1) { // Check for allocation error
+      for (int j = 0; j < i; ++j) {
+        free_block(new_inode->blocks[j]); // Release previously allocated blocks
+      }
+
+      free(new_inode->blocks);
+      free(new_inode->name);
+      free(new_inode);
+      return NULL;
+    }
+  }
+
+  parent->num_children++;
+
+  parent->children = realloc(parent->children,sizeof(struct inode*) * parent->num_children);  //reallocate for the new inode 
+  parent->children[parent->num_children-1] = new_inode;
+  
+    return new_inode;
 }
 
 struct inode* create_dir( struct inode* parent, char* name )

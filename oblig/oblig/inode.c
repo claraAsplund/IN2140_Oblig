@@ -100,48 +100,116 @@ struct inode* create_file( struct inode* parent, char* name, int size_in_bytes )
     return new_inode;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct inode* create_dir( struct inode* parent, char* name )
 {
-    if(parent->is_directory == 0) {
-        return NULL; // parent is a file and not a directory
-    }
 
 
-    //check if the file/directory already exist
-    for (int i = 0; i < parent->num_children; ++i) {
-    if (strcmp(parent->children[i]->name, name) == 0) {
-      return NULL; 
-    }
-  }
+    if(parent != NULL) { // checking if dir is root root
+        if(parent->is_directory == 0) {
+            return NULL; // parent is a file and not a directory
+        }
 
-  struct inode* new_inode = malloc(sizeof(struct inode)); 
-    if(new_inode == NULL) {
-    return NULL; //Failed to allocate
-  }
+		if (strcmp(parent->name, "/")==0){ //har et litt spesielt tilfelle med root dir vil alltid ha 1 barn mer enn det den har
+						
+					}
+			else{
+					
+				for (int i = 0; i < parent->num_children; ++i) {
+						 if (strcmp(parent->children[i]->name, name) == 0) { 
+							 return NULL; 
+												            }
+												        }
+					}
 
-  //assign values and allocate dynamically
+			
+			
+		
+        
 
-  new_inode->name = strdup(name); // Copy the name
-  new_inode->id = next_inode_id();
-  new_inode->is_directory = 1;
-  new_inode->num_children = 0;
-  new_inode->children = malloc(sizeof(struct inode) * parent->num_children);
-    if(new_inode->children == NULL) {
-        free(new_inode->name);
-        free(new_inode);
-        return NULL; // failed to allocate the children array of inodes
-    }
+        struct inode* new_inode = calloc(1,sizeof(struct inode));
+         
+        if(new_inode == NULL) {
+            return NULL; //Failed to allocate
+        }
+
+    new_inode->name = strdup(name); // Copy the name
+    new_inode->id = next_inode_id();
+    new_inode->is_directory = 1;
+    new_inode->num_children = 0;
+    new_inode->children = calloc(1,sizeof(struct inode) * new_inode->num_children);
+        if(new_inode->children == NULL) {
+            free(new_inode->name);
+            free(new_inode);
+            return NULL; // failed to allocate the children array of inodes
+        }
+
+    new_inode->filesize = NULL;
+    new_inode->num_blocks = NULL;
+
+
+    parent->num_children++;
+    parent->children = realloc(parent->children,sizeof(struct inode*) * parent->num_children);  //reallocate for the new inode 
+    parent->children[parent->num_children-1] = new_inode;
     
-  new_inode->filesize = NULL;
-  new_inode->num_blocks = NULL;
-
-
-  parent->num_children++;
-  parent->children = realloc(parent->children,sizeof(struct inode*) * parent->num_children);  //reallocate for the new inode 
-  parent->children[parent->num_children-1] = new_inode;
-  
     return new_inode;
+
+    }
+
+    else{
+
+
+    struct inode* new_inode = calloc(1,sizeof(struct inode));
+    /*struct inode* new_inode = calloc(1, (sizeof(struct inode)));*/
+   
+     
+        if(new_inode == NULL) {
+        return NULL; //Failed to allocate
+    }
+
+    //assign values and allocate dynamically
+
+    new_inode->name = strdup(name); // Copy the name
+    new_inode->id = next_inode_id();
+    new_inode->is_directory = 1;
+    new_inode->num_children = 0;
+    new_inode->children = calloc(1,sizeof(struct inode) * new_inode->num_children);
+    /*new_inode->children = calloc(1, (sizeof(struct inode) * new_inode->num_children));*/
+        if(new_inode->children == NULL) {
+            free(new_inode->name);
+            free(new_inode);
+            return NULL; // failed to allocate the children array of inodes
+        }
+        
+    new_inode->filesize = NULL;
+    new_inode->num_blocks = NULL;
+
+
+    new_inode->children = realloc(new_inode->children,sizeof(struct inode*) * new_inode->num_children);  //reallocate for the new inode 
+
+    return new_inode;
+    }
 }
+
+
+
+
+
+
+
 
 struct inode* find_inode_by_name( struct inode* parent, char* name )
 {

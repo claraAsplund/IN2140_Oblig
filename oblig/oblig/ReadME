@@ -1,0 +1,18 @@
+in2140-oblig-1
+
+2140 oblig 1 repo 2.1 Design Write a README file explaining the following points:
+
+• How to read the master file table (as described in the lecture slides) file from disk and load the inodes into memory. 
+man starter med å lese inn master_file_table.bak som inneholder all dataen til alle nodene (navn, id, blocks, osv) 
+vi oppretter struckt inodes med å lese inn all dataen atributt for atributt og setter disse verdiene inni den gitte inoden da har vi en liste av inodes som senere itereres gjenom på nytt for å finne barnenodes og lage pekere fra foreldre til sine gitte barn basert på id vi får da en trebasert filstruktur
+
+• Any implementation requirements that are not met.
+
+    vi har implementert alt
+
+• Any part of the implementation that deviates from the precode. For example, if you are creating your own files, 
+explain what their purpose is. vi la til en ekstra funksjkon på inode.h som heter load_inodes() fordi vår implementasjon av loading av inodes er rekursiv og load_inodes() kaller load_inode()
+
+• Any tests that fail and what you think the cause may be alle tester funker med valgrind på en ifi maskin og gir riktig output. 
+men på test_del_fs_2 og 3 så gir den anderledes output på binærstrengen under disk. vi måtte endre par linjer kode med realloc 
+siden valgrind på våre privat maskiner gi ikke error, men ifi sin valgrind gjorde. vi er usikkre hvorfor. komentar på dette hadde vært fint hvis mulig 🙂
